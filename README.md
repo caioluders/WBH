@@ -1,4 +1,12 @@
 # WBH - Wordlists by history
+
+```
+╦ ╦╔╗ ╦ ╦
+║║║╠╩╗╠═╣
+╚╩╝╚═╝╩ ╩
+Wordlists by history 0.1v
+```
+
 This script will create a subdomain and an files/path wordlist based on your browser history.
 
 **Please close the browsers before running.**
