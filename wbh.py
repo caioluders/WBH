@@ -64,7 +64,7 @@ def main(args):
 	subs.writelines("%s\n" % sub for sub in wordlists["subs"])	
 	subs.close()
 
-	files = open(os.path.join(args.directory,"paths.txt"),"w")
+	files = open(os.path.join(args.directory,"paths_and_files.txt"),"w")
 	files.writelines("%s\n" % f for f in wordlists["files"])
 	files.close()
 
