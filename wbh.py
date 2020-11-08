@@ -15,8 +15,6 @@ def parse_urls(urls,limit) :
 		for f in url.path.split("/") :
 			if len(f) <= limit : files.add(f)
 
-		print(url.query)
-
 		for tp in url.query.split("&") :
 			if len(tp) <= limit : params.add(tp.split("=")[0].split("[")[0])
 
