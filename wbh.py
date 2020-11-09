@@ -6,9 +6,11 @@ def parse_urls(urls,limit) :
 	subs = set()
 	files = set()
 	params = set() 
-
+	domains = set()
 	for u in urls :
 		url = urlparse(u)
+		domains.add(url.hostname)
+
 		for d in url.netloc.split(".")[:-2] :
 			if len(d) <= limit : subs.add(d)
 
@@ -17,8 +19,9 @@ def parse_urls(urls,limit) :
 
 		for tp in url.query.split("&") :
 			if len(tp) <= limit : params.add(tp.split("=")[0].split("[")[0])
+		
 
-	return {"subs":subs,"files":files,"params":params}
+	return {"subdomains":subs,"files":files,"parameters":params, "domains":domains}
 
 def get_chrome_urls() :
 	history_chrome_files = glob.glob(os.path.expanduser("~")+"/.config/*chrom*/Default/History")
@@ -44,7 +47,6 @@ def get_firefox_urls() :
 		c.execute("select url from moz_places;")
 		for x in c.fetchall() :
 			turls.append(x[0])
-	
 	return turls
 
 def main(args):
@@ -61,21 +63,16 @@ def main(args):
 
 	wordlists = parse_urls(urls,args.limit)
 
-	print("%s subdomains found!" % len(wordlists["subs"]))
-	print("%s paths found!" % len(wordlists["files"]))
-	print("%s params found!" % len(wordlists["params"]))
 
-	subs = open(os.path.join(args.directory,"subdomains.txt"),"w")
-	subs.writelines("%s\n" % sub for sub in wordlists["subs"])	
-	subs.close()
+	for key, result_list in wordlists.items():
+		print(f"{len(result_list)} {key} found!")
+		output = open(os.path.join(args.directory,f"{key}.txt"),"w")
+		output.writelines("%s\n" % sub for sub in result_list)	
+		output.close()
 
-	files = open(os.path.join(args.directory,"paths.txt"),"w")
-	files.writelines("%s\n" % f for f in wordlists["files"])
-	files.close()
 
-	params = open(os.path.join(args.directory,"params.txt"),"w")
-	params.writelines("%s\n" % f for f in wordlists["params"])
-	params.close()
+
+
 
 if __name__ == "__main__" :
 	parser = argparse.ArgumentParser(description="Create subdomains and files wordlists from browser history")
