@@ -38,7 +38,7 @@ def get_chrome_urls():
             "~")+"\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\History")
     else:
         history_chrome_files = glob.glob(os.path.expanduser(
-            "~")+"/.config/*chrom*/Default/History")
+            "~")+"/.config/*chrom*/*/History")
 
     turls = []
 
