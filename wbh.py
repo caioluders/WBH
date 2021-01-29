@@ -93,7 +93,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Create subdomains and files wordlists from browser history")
+        description="Create subdomains, files, parameters and domains wordlists from browser history")
     parser.add_argument('-d', '--directory',
                         help='Directory to save the wordlists', default="./")
     parser.add_argument(

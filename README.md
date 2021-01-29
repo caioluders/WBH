@@ -7,8 +7,9 @@
 Wordlists by history 0.1v
 ```
 
-This script will create a subdomain and an files/path wordlist based on your browser history.
+This script will create subdomains, files, parameters and domains wordlists based on your browser history.
 
+*Works on Linux and Windows*
 **Please close the browsers before running.**
 
 *Idea came from this tweet: https://twitter.com/nil0x42/status/1318950787909849091*
@@ -16,9 +17,10 @@ This script will create a subdomain and an files/path wordlist based on your bro
 ## Usage
 
 ```
+$ python3 wbh.py --help
 usage: wbh.py [-h] [-d DIRECTORY] [-l LIMIT] [-c] [-f]
 
-Create subdomains and files wordlists from browser history
+Create subdomains, files, parameters and domains wordlists from browser history
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -28,10 +30,13 @@ optional arguments:
                         Limit of characters. Default: 40
   -c, --chrome          Use Google Chrome to make the wordlists
   -f, --firefox         Use Firefox to make the wordlists
+
 ```
 
 ```
 $ python3 wbh.py
-2753 subdomains found!
-27367 paths found!
-```
+10 subdomains found!
+59 files found!
+31 parameters found!
+18 domains found!
+``
