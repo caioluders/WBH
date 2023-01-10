@@ -56,6 +56,9 @@ def get_firefox_urls():
     if sys.platform == "win32":
         history_firefox_files = glob.glob(os.path.expanduser(
             "~")+"\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\*\\places.sqlite")
+    elif sys.platform == "darwin" :
+        history_firefox_files = glob.glob(os.path.expanduser(
+            "~")+"/Library/Application Support/Firefox/Profiles/*/places.sqlite")
     else:
         history_firefox_files = glob.glob(os.path.expanduser(
             "~")+"/.mozilla/firefox/*/places.sqlite")
